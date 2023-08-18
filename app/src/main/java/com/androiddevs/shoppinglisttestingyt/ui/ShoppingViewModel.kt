@@ -51,16 +51,19 @@ class ShoppingViewModel @ViewModelInject constructor(
         if (name.isEmpty() || amountString.isEmpty() || priceString.isEmpty()) {
             _insertShoppingItemStatus.postValue(
                 Event(Resource.error("The fields must not be empty")))
+            return
         }
 
         if (name.length > Constants.MAX_NAME_LENGTH) {
             _insertShoppingItemStatus.postValue(
                 Event(Resource.error("The name of the item must not exceed ${Constants.MAX_NAME_LENGTH} characters.")))
+            return
         }
 
         if (priceString.length > Constants.MAX_PRICE_LENGTH) {
             _insertShoppingItemStatus.postValue(
                 Event(Resource.error("The price of the item must not exceed ${Constants.MAX_PRICE_LENGTH} characters.")))
+            return
         }
 
         val amount = try {

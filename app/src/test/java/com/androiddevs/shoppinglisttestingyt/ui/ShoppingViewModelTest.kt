@@ -1,19 +1,25 @@
 package com.androiddevs.shoppinglisttestingyt.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.androiddevs.shoppinglisttestingyt.MainCoroutineRule
 import com.androiddevs.shoppinglisttestingyt.getOrAwaitValueTest
 import com.androiddevs.shoppinglisttestingyt.other.Constants
 import com.androiddevs.shoppinglisttestingyt.other.Status
 import com.androiddevs.shoppinglisttestingyt.repositories.FakeShoppingRepository
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class ShoppingViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
 
     private lateinit var viewModel: ShoppingViewModel
 
@@ -49,7 +55,7 @@ class ShoppingViewModelTest {
     fun `insert shopping item with too long price, returns error`() {
         val string = buildString {
             for(i in 1..Constants.MAX_PRICE_LENGTH + 1) {
-                append('1')
+                append(1)
             }
         }
         viewModel.insertShoppingItem("name", "5", string)
