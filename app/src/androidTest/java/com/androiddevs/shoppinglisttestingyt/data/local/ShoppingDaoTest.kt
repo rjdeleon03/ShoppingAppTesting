@@ -4,6 +4,9 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
+import com.androiddevs.shoppinglisttestingyt.getOrAwaitValue
+import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
@@ -18,6 +21,7 @@ import org.junit.runner.RunWith
 // @MediumTest -- for Integrated Tests
 // @LargeTest -- for Automated Tests
 @SmallTest
+@ExperimentalCoroutinesApi // For runBlockingTest
 class ShoppingDaoTest {
 
     private lateinit var database: ShoppingItemDatabase
@@ -51,6 +55,9 @@ class ShoppingDaoTest {
         dao.insertShoppingItem(shoppingItem)
 
         val allShoppingItems = dao.observeAllShoppingItems()
+            .getOrAwaitValue()
+
+        assertThat(allShoppingItems).contains(shoppingItem)
     }
 
 }
