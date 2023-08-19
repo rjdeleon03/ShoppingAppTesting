@@ -9,12 +9,11 @@ import com.androiddevs.shoppinglisttestingyt.other.Constants.BASE_URL
 import com.androiddevs.shoppinglisttestingyt.other.Constants.DATABASE_NAME
 import com.androiddevs.shoppinglisttestingyt.repositories.DefaultShoppingRepository
 import com.androiddevs.shoppinglisttestingyt.repositories.ShoppingRepository
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -23,7 +22,7 @@ import javax.inject.Singleton
 @Module
 // Changed to SingletonComponent for Hilt to be
 // more inclusive of non-Android projects
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Singleton

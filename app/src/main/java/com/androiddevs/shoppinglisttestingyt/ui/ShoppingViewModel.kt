@@ -1,6 +1,5 @@
 package com.androiddevs.shoppinglisttestingyt.ui
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,10 +10,13 @@ import com.androiddevs.shoppinglisttestingyt.other.Constants
 import com.androiddevs.shoppinglisttestingyt.other.Event
 import com.androiddevs.shoppinglisttestingyt.other.Resource
 import com.androiddevs.shoppinglisttestingyt.repositories.ShoppingRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.Exception
+import javax.inject.Inject
 
-class ShoppingViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ShoppingViewModel @Inject constructor(
     private val repository: ShoppingRepository
 ): ViewModel() {
 

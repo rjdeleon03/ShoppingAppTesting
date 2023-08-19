@@ -7,12 +7,12 @@ import com.androiddevs.shoppinglisttestingyt.data.local.ShoppingItemDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Named
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object TestAppModule {
 
     // No need to annotate with Singleton,
