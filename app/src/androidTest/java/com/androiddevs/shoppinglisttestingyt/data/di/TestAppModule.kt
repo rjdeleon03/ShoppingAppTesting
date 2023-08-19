@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.androiddevs.shoppinglisttestingyt.data.local.ShoppingItemDatabase
+import com.androiddevs.shoppinglisttestingyt.repositories.FakeShoppingRepositoryAndroidTest
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +28,7 @@ object TestAppModule {
             ShoppingItemDatabase::class.java
         ).allowMainThreadQueries().build()
     }
+
+    @Provides
+    fun provideFakeShoppingRepository() = FakeShoppingRepositoryAndroidTest()
 }
